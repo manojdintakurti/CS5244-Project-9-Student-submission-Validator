@@ -256,6 +256,8 @@ def process_csv(file):
         for _, row in df.iterrows():
             student_name = row['StudentName']
             host_url = row['HostURL'].rstrip("/")
+            if student_name is None:
+                continue
 
             # Run tests
             results, score = run_tests(host_url, student_name)
