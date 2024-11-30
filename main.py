@@ -277,9 +277,29 @@ def process_csv(file):
                 zf.write(os.path.join(output_dir, file_name), arcname=file_name)
 
     return pd.DataFrame(student_scores), zip_file
+def add_background_image():
+    """
+    Adds a background image to the Streamlit app.
 
+    Args:
+        image_url (str): URL or path to the background image.
+    """
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background: url("https://wallpapers.com/images/hd/black-christmas-tree-sz2ae3jv2mbh14az.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 def main():
+    add_background_image()
     st.title("Bookstore Order Validator")
     # Sample CSV download
     st.subheader("Download Sample CSV")
