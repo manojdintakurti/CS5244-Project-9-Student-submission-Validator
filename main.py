@@ -89,8 +89,8 @@ def run_tests(host_url, student_name):
     points = 20  # Reset points for each student
     results = []
     today = datetime.date.today()
-    current_month = today.month
-    current_year = today.year
+    current_month = 12
+    current_year = 2024
 
     try:
         results.append(f"TESTING {student_name} - {host_url}: out of {total_points}\n")
