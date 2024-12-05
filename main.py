@@ -137,7 +137,7 @@ def run_tests(host_url, student_name):
             test_form = form.copy()
             test_form[field] = ""
             status, response, payload = submit_order(host_url, test_form, book)
-            if status != 400:
+            if status != 400 or expected_success_message in response:
                 results.append(
                     f"========================================================\nTested with empty value for field {field}.\nExpected field error but encountered:\n\tstatus_code={status} and \n\tresponse={response}\n\norder placement failed (FAIL, -0.5)\n--------------------------------------------------------\n{payload}\n========================================================\n\n")
                 points -= 0.5
@@ -148,7 +148,7 @@ def run_tests(host_url, student_name):
                 test_form = form.copy()
                 test_form[field] = value
                 status, response, payload = submit_order(host_url, test_form, book)
-                if status != 400:
+                if status != 400 or expected_success_message in response:
                     results.append(
                         f"========================================================\nTested with invalid {field}/{value}.\nExpected field error but encountered:\n\tstatus_code={status} and \n\tresponse={response}\n\norder placement failed (FAIL, -0.25)\n--------------------------------------------------------\n{payload}\n========================================================\n\n")
                     points -= 0.25
